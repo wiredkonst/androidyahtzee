@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/frag_mainmenu">
+
+    <fragment
+        android:id="@+id/frag_ingame"
+        android:name="com.yathzee.Fragment_InGame"
+        android:label="ingame"
+        tools:layout="@layout/fragment_ingame">
+        <action
+            android:id="@+id/action_ingame_to_mainmenu"
+            app:destination="@id/frag_mainmenu" />
+        <argument
+            android:name="player1"
+            app:argType="string" />
+        <argument
+            android:name="player2"
+            app:argType="string" />
+        <argument
+            android:name="player2IsBot"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_ingame_to_fragment_Results"
+            app:destination="@id/frag_Results" />
+        <argument
+            android:name="d1"
+            app:argType="integer" />
+        <argument
+            android:name="d2"
+            app:argType="integer" />
+        <argument
+            android:name="d3"
+            app:argType="integer" />
+        <argument
+            android:name="d4"
+            app:argType="integer" />
+        <argument
+            android:name="d5"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_mainmenu"
+        android:name="com.yathzee.Fragment_MainMenu"
+        android:label="mainmenu"
+        tools:layout="@layout/fragment_mainmenu">
+        <action
+            android:id="@+id/action_mainmenu_to_ingame"
+            app:destination="@id/frag_ingame" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_Results"
+        android:name="com.yathzee.Fragment_Results"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" >
+        <action
+            android:id="@+id/action_fragment_Results_to_mainmenu"
+            app:destination="@id/frag_mainmenu" />
+        <argument
+            android:name="player1_name"
+            app:argType="string" />
+        <argument
+            android:name="player2_name"
+            app:argType="string" />
+        <argument
+            android:name="player1_score"
+            app:argType="integer" />
+        <argument
+            android:name="player2_score"
+            app:argType="integer" />
+    </fragment>
+</navigation>

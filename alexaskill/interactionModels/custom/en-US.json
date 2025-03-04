@@ -1,0 +1,447 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "slots": [
+            {
+              "name": "name",
+              "type": "AMAZON.FirstName"
+            }
+          ],
+          "name": "SetFirstPlayerIntent",
+          "samples": [
+            "first player is {name}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "name",
+              "type": "AMAZON.FirstName"
+            }
+          ],
+          "name": "SetSecondPlayerIntent",
+          "samples": [
+            "second player is {name}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "StartGameIntent",
+          "samples": [
+            "lets play",
+            "start the game",
+            "start"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "numbers",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "name": "TakeDiceNrsIntent",
+          "samples": [
+            "keep the {numbers}",
+            "keep {numbers}",
+            "take {numbers}",
+            "take dice with {numbers}",
+            "take dice with number {numbers}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "onumbers",
+              "type": "AMAZON.Ordinal"
+            }
+          ],
+          "name": "TakeDiceOrdinalsIntent",
+          "samples": [
+            "keep the {onumbers} die",
+            "take the {onumbers} die"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "numbers",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "name": "ReleaseDiceNrsIntent",
+          "samples": [
+            "release {numbers}",
+            "release dice with {numbers}",
+            "release dice with number {numbers}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "onumbers",
+              "type": "AMAZON.Ordinal"
+            }
+          ],
+          "name": "ReleaseDiceOrdinalsIntent",
+          "samples": [
+            "release the {onumbers} die"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "RollDiceIntent",
+          "samples": [
+            "roll it",
+            "roll the dice"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "sname",
+              "type": "scorename"
+            }
+          ],
+          "name": "GetScoreIntent",
+          "samples": [
+            "what\u0027s the score for {sname}",
+            "score for {sname}",
+            "whats the score for {sname} "
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "sname",
+              "type": "scorename"
+            }
+          ],
+          "name": "ScoreDicesIntent",
+          "samples": [
+            "credit as {sname}",
+            "score {sname}",
+            "score as {sname}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "RestartIntent",
+          "samples": [
+            "go back to menu",
+            "play again",
+            "restart"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "name",
+              "type": "AMAZON.FirstName"
+            }
+          ],
+          "name": "SetPlayerIntent",
+          "samples": [
+            "{name}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "NoIntent",
+          "samples": [
+            "nope",
+            "no"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "YesIntent",
+          "samples": [
+            "jap",
+            "yes"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ListScoresIntent",
+          "samples": [
+            "what are my scores",
+            "list scores"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ListMissingScoresIntent",
+          "samples": [
+            "missing scores",
+            "list missing scores"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ListDicesIntent",
+          "samples": [
+            "what are my current dice",
+            "dice"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "sname",
+              "type": "scorename"
+            }
+          ],
+          "name": "HelpScoreIntent",
+          "samples": [
+            "what is {sname}",
+            "what\u0027s {sname}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "numbers",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "name": "RerollDiceNrsIntent",
+          "samples": [
+            "reroll dice with number {numbers}"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "multipleValues": {
+                "enabled": true
+              },
+              "name": "onumbers",
+              "type": "AMAZON.Ordinal"
+            }
+          ],
+          "name": "RerollDiceOrdinalsIntent",
+          "samples": [
+            "reroll the {onumbers} die",
+            "reroll {onumbers} die"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "ToggleVuiOnlyIntent",
+          "samples": [
+            "toggle voice only"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "StartRerollCmdIntent",
+          "samples": [
+            "reroll"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "onumber",
+              "type": "AMAZON.Ordinal"
+            }
+          ],
+          "name": "OrdinalIntent",
+          "samples": [
+            "and the {onumber}",
+            "and {onumber}",
+            "the {onumber}",
+            "{onumber}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "StartScoreCmdIntent",
+          "samples": [
+            "credit as",
+            "score as"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "sname",
+              "type": "scorename"
+            }
+          ],
+          "name": "ScoreNameIntent",
+          "samples": [
+            "{sname}"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "StartCloseCmdIntent",
+          "samples": [
+            "stop",
+            "end",
+            "close"
+          ]
+        },
+        {
+          "slots": [],
+          "name": "EndCloseCmdIntent",
+          "samples": [
+            "the game"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "chance"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "yathzee",
+                  "yatzy"
+                ],
+                "value": "yahtzee"
+              }
+            },
+            {
+              "name": {
+                "value": "large straight"
+              }
+            },
+            {
+              "name": {
+                "value": "small straight"
+              }
+            },
+            {
+              "name": {
+                "value": "full house"
+              }
+            },
+            {
+              "name": {
+                "value": "four of a kind"
+              }
+            },
+            {
+              "name": {
+                "value": "three of a kind"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "6",
+                  "six",
+                  "6s",
+                  "sixe\u0027s"
+                ],
+                "value": "sixes"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "5",
+                  "five",
+                  "5s",
+                  "five\u0027s"
+                ],
+                "value": "fives"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "4",
+                  "four",
+                  "4s",
+                  "four\u0027s"
+                ],
+                "value": "fours"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "3",
+                  "three",
+                  "3s",
+                  "three\u0027s"
+                ],
+                "value": "threes"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "2",
+                  "two",
+                  "2s",
+                  "two\u0027s"
+                ],
+                "value": "twos"
+              }
+            },
+            {
+              "name": {
+                "synonyms": [
+                  "1",
+                  "one",
+                  "1s",
+                  "one\u0027s"
+                ],
+                "value": "ones"
+              }
+            }
+          ],
+          "name": "scorename"
+        }
+      ],
+      "invocationName": "special dice game"
+    }
+  }
+}

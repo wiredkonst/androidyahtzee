@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Yathzee</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="name_of_first_player">Name of first player:</string>
+    <string name="enter_text">Enter text...</string>
+    <string name="name_of_second_player">Name of second player:</string>
+    <string name="start_yathzee_game">start a yathzee game!</string>
+    <string name="desc_imgbtn_dice1">dice1</string>
+    <string name="desc_imgbtn_dice2">dice2</string>
+    <string name="desc_imgbtn_dice3">dice3</string>
+    <string name="desc_imgbtn_dice4">dice4</string>
+    <string name="desc_imgbtn_dice5">dice5</string>
+    <string name="btn_roll_txt">roll the dice! (%d rolls left)</string>
+    <string name="btn_select_txt">select a score!</string>
+    <string name="btn_selected_txt">score \'%s\'!</string>
+    <string name="btn_reroll_unselected_txt">select some dice!</string>
+    <string name="btn_reroll_selected_txt">reroll!</string>
+    <string name="score_ones">Ones</string>
+    <string name="current_player">current player: %s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="player_won">%s won the match!</string>
+    <string name="player_score">%s scored %d points</string>
+    <string name="player_draw">Its a draw!</string>
+    <string name="show_gestures">show gestures</string>
+    <string name="restart">restart</string>
+    <string name="toggle_gestures">toggle gestures</string>
+    <string name="textview_dice_default">select dice to keep:</string>
+    <string name="textview_dice_reroll">select dice to reroll:</string>
+</resources>
