@@ -1,10 +1,10 @@
 # Android Yahtzee
-multimodal android app consisting of a [yahtzee](https://en.wikipedia.org/wiki/Yahtzee) clone developed using android studio in java. a major difference to the original version is that there are no bonuses. the app can be used via touch, voice, gesture and any combination of those methods. software contains code licensed under [bsd-3](https://opensource.org/license/bsd-3-clause), [apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [mit](https://opensource.org/license/mit).
-
+Multimodal android app consisting of a [yahtzee](https://en.wikipedia.org/wiki/Yahtzee) clone developed using android studio in java. A major difference to the original version is that there are no bonuses.
+The app can be used via touch, voice, gesture and any combination of those methods. Software contains code licensed under [bsd-3](https://opensource.org/license/bsd-3-clause), [apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) and [mit](https://opensource.org/license/mit).
+The second player can be replaced by a pc controlled player. 
 | main menu | in game | score |
 |-----------|---------|-------|
-| ![](./github/ss3.png) |  ![](./github/ss1.png) | ![](./github/ss2.png) |
-
+| ![](./github/ss3.jpg) |  ![](./github/ss1.png) | ![](./github/ss2.png) |
 ## Voice interaction
 the app uses a [custom alexa skill](https://developer.amazon.com/en-US/docs/alexa/custom-skills/steps-to-build-a-custom-skill.html) for the voice interaction. the backend for the alexa skill (lambda function) is a nodejs server which sends https requests to the server handling the voice interactions. the address of the server handling the interactions can be configured in variable `extApi`. the skill can be found in `./alexaskill`.
 the app starts a webserver on port `8080` using [nanohttpd](https://github.com/NanoHttpd/nanohttpd) to handle https requests. the app can be used via voice interface only, help systems exist. a dialog might look like this:
@@ -68,3 +68,8 @@ there are some special commands which contain slots which can be filled in multi
 - *rerolling specific dice only*: (voice)"reroll";dice positions;roll action triggered e.g. (voice) "dice" or pressing the button for rerolling
 - *scoring*: (voice)"score as";score name
 - *closing the game*: (voice)"end";(voice)"the game"
+## Pc controlled Player
+The second player can be played by the computer.
+This player is only compatible with the touch interface.
+Also, the bot is based on heuristics and probabilities and isnt as smart as a bot could be, so hes not capable of replacing an experienced yahtzee player.
+When its the turn of the pc player, each decision with intention will be displayed around 3 seconds. Note: some markings might be missing, however the scores are correct. TODO: Need to fix the visual bug. 

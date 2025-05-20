@@ -27,4 +27,7 @@
     <string name="toggle_gestures">toggle gestures</string>
     <string name="textview_dice_default">select dice to keep:</string>
     <string name="textview_dice_reroll">select dice to reroll:</string>
+    <string name="textview_dice_pc">pc decides for %s and keeps:</string>
+    <string name="textview_dice_pc_score">pc scores %s with:</string>
+
 </resources>

@@ -2,6 +2,7 @@ package com.yathzee;
 
 import android.app.Activity;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -21,6 +22,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.color.utilities.Score;
 import com.yathzee.databinding.FragmentIngameBinding;
 import com.yathzee.mediafusion.Slot;
+import com.yathzee.pc.PcPlayer;
 
 import org.w3c.dom.Text;
 
@@ -30,6 +32,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fragment_InGame extends Fragment {
 
@@ -48,6 +52,10 @@ public class Fragment_InGame extends Fragment {
   private int player; //player idx currently playing
   private int rolls; //rolls done already
   private int score_idx; //score to be credited
+  //-- pc player specific
+  private Timer pcTimer;
+  private boolean pcPlays;
+
   //-- util
   private static final int max_rolls = 3;
   private Random myRandom;
@@ -189,6 +197,43 @@ public class Fragment_InGame extends Fragment {
     updateDiceBtn();
     //update table and score
     updateTable();
+    //bot actions
+    if(players.get(player) instanceof PcPlayer){
+      pcPlays = true;
+      AsyncTask.execute(()->{
+        while (true) {
+          ((MainActivity) getActivity()).runOnUiThread(() -> {
+            PcPlayer pc = (PcPlayer) players.get(player);
+            String s="ds:[";
+            for (Dice d: dices)s+=d.num+",";s+="] r:"+getRemainingRolls();
+            System.out.println(s);
+            int d = pc.decide(dices, getRemainingRolls());
+            String pcState;
+            if(d > -1) pcState = getString(R.string.textview_dice_pc_score,scores.Names[d]);
+            else pcState = getString(R.string.textview_dice_pc, scores.Names[pc.lastDecision.score]);
+            binding.textviewDices.setText(pcState);
+            List<Integer> is = new ArrayList<>(5);
+            for (int i = 0; i < 5; i++) is.add(i);
+            updateDices(is);
+            if (d > -1) {
+              setScore(d);
+            }
+          });
+          try {
+            Thread.sleep(3500);
+          } catch (Exception e) {
+          }
+          int d = score_idx;
+          ((MainActivity) getActivity()).runOnUiThread(() -> {
+            diceBtnAction();
+          });
+          if (d > -1) break;
+        }
+        ((MainActivity) getActivity()).runOnUiThread(() -> {
+          pcPlays=false;
+        });
+      });
+    }
 
   }
   // reset whole dice state & update
@@ -302,6 +347,7 @@ public class Fragment_InGame extends Fragment {
 
   //one single dice btn action
   private void diceBtnAction(int nr){
+    if(pcPlays)return;
     if(((MainActivity)getActivity()).getCmdController().tryFillSlot(Slot.Type.Touch,btnDiceNrAction,nr))return;
     toggleTaken(nr);
   }
@@ -405,9 +451,10 @@ public class Fragment_InGame extends Fragment {
     dices.get(4).num = args.getInt("d5",5);
 
     Player _p1 = new Player(p1,scores.Names.length);
-    Player _p2 = new Player(p2,scores.Names.length);
+    Player _p2 = (p2isPc)?new PcPlayer(scores.Names.length):new Player(p2,scores.Names.length);
+
     //for(int i=1;i< scores.Names.length;i++){_p1.addScore(scores.Names[i],42);_p2.addScore(scores.Names[i],42);}
-    //TODO: implement a bot
+    pcTimer = new Timer();
     players.add(_p1);
     players.add(_p2);
     switchTurn(true);
@@ -415,7 +462,7 @@ public class Fragment_InGame extends Fragment {
     binding.btnMenu.setOnClickListener(v->restart());
     binding.btnRoll.setOnClickListener(v->{
       if(((MainActivity)getActivity()).getCmdController().tryFillSlot(Slot.Type.Touch,btnDiceAction,null))return;
-      diceBtnAction();
+      if(!pcPlays)diceBtnAction();
     });
     for(int i=0;i<dices.size();i++){
       int _i = i;
@@ -426,7 +473,7 @@ public class Fragment_InGame extends Fragment {
       int _i = i;//effective final for lambda expr
       tr.setOnClickListener(v->{
         if(((MainActivity)getActivity()).getCmdController().tryFillSlot(Slot.Type.Touch,btnSetScoreAction,_i))return;
-        setScore(_i);});
+        if(!pcPlays)setScore(_i);});
       tr.setOnHoverListener((v,event)->{
         switch(event.getAction()){
           case MotionEvent.ACTION_HOVER_ENTER:

@@ -8,19 +8,19 @@ import java.util.Set;
 
 public class Scores {
 
-  public final String Ones = "Ones";
-  public final String Twos = "Twos";
-  public final String Threes = "Threes";
-  public final String Fours = "Fours";
-  public final String Fives = "Fives";
-  public final String Sixes = "Sixes";
-  public final String ThreeOfAKind = "Three of a kind";//threeKind
-  public final String FourOfAKind = "Four of a kind";//fourKind
-  public final String FullHouse = "Full house";
-  public final String SmallStraight = "Small straight";
-  public final String LargeStraight = "Large straight";
-  public final String Yahtzee = "Yahtzee";
-  public final String Chance = "Chance";
+  public final String Ones = "Ones";//0
+  public final String Twos = "Twos";//1
+  public final String Threes = "Threes";//2
+  public final String Fours = "Fours";//3
+  public final String Fives = "Fives";//4
+  public final String Sixes = "Sixes";//5
+  public final String ThreeOfAKind = "Three of a kind";//6 threeKind
+  public final String FourOfAKind = "Four of a kind";//7 fourKind
+  public final String FullHouse = "Full house";//8
+  public final String SmallStraight = "Small straight";//9
+  public final String LargeStraight = "Large straight";//10
+  public final String Yahtzee = "Yahtzee";//11
+  public final String Chance = "Chance";//12
   public final String[] Names = {Ones,Twos,Threes,Fours,Fives,Sixes,ThreeOfAKind,FourOfAKind,FullHouse,SmallStraight, LargeStraight,Yahtzee,Chance};
   public int getIdx(String name){
     for(int i=0;i<Names.length;i++){
@@ -28,7 +28,7 @@ public class Scores {
     }
     return -1;
   }
-  private Map<Integer,Integer> getApps(List<Dice> dices){ //APPearance S
+  public static Map<Integer,Integer> getApps(List<Dice> dices){ //APPearance S
     Map<Integer,Integer> as = new HashMap<>(6);
     for(Dice d: dices){
       if(as.containsKey(d.num)){
@@ -40,8 +40,8 @@ public class Scores {
     }
     return as;
   }
-  private final int[][] fourSeqAllPoss = {{1,2,3,4},{2,3,4,5},{3,4,5,6}};
-  private final int[][] fiveSeqAllPoss = {{1,2,3,4,5},{2,3,4,5,6}};//kinda dumb cuz its always just 5 dices but why not?
+  public static final int[][] fourSeqAllPoss = {{1,2,3,4},{2,3,4,5},{3,4,5,6}};
+  public static final int[][] fiveSeqAllPoss = {{1,2,3,4,5},{2,3,4,5,6}};//kinda dumb cuz its always just 5 dices but why not?
   private boolean seqCheck(int[][] seqs, Set<Integer> nrs){
     for(int[] seq: seqs){
       boolean ex = true;
